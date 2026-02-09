@@ -34,6 +34,8 @@ robot_pts = np.array([
 
 # --- SECTION 2: HOMOGRAPHY CALCULATION ---
 H, mask = cv2.findHomography(img_pts, robot_pts, method=cv2.RANSAC)
+print("Homography matrix H:")
+print(H)
 
 # --- SECTION 3: MAPPING FUNCTION ---
 
@@ -48,6 +50,10 @@ def pixel_to_robot(u, v, H):
 
     return X, Y
 
+
+# Test with one of the calibration points
+X_pred, Y_pred = pixel_to_robot(599, 207, H)
+print("Predicted:", X_pred, Y_pred, "Actual:", 400, -75)
 
 # --- SECTION 4: VALIDATION LOOP ---
 print(f"{'Point':<6} | {'Actual (X, Y)':<18} | {'Predicted (X, Y)':<22} | {'Error (mm)':<10}")
