@@ -90,7 +90,7 @@ def mouse_callback(event, u, v, flags, param):
 
         # Visual feedback on the image
         cv2.circle(img_display, (u, v), 6, (0, 0, 255), -1)
-        coord_text = f"X:{X_rob:.1f}, Y:{Y_rob:.1f}"
+        coord_text = f"{u}, {v} -> {X_rob:.1f}, {Y_rob:.1f}"
         cv2.putText(img_display, coord_text, (u + 15, v - 15),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
 
